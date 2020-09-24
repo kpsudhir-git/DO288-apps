@@ -5,13 +5,14 @@ pipeline {
     }
     agent {
       node {
+       label 'master'
         // TODO: run this simple pipeline on jenkins 'master' node
       }
     }
 
     stages {
 
-        stage('stage 1') {
+        stage('stage-sudhir 1') {
             steps {
                 script {
                     openshift.withCluster() {
@@ -25,9 +26,27 @@ pipeline {
 
         // TODO: ADD A STAGE THAT SAYS HELLO
 
+stage ( 'stage 2') {
+
+steps {
+
+sh echo 'hellp from stage 2 !'
+
+}
+}
+
+
+
+stage('manual approval') {
+steps {
+timeout(time: 60, unit: 'MINUTES') {
+input message: "Move to stage 3?"
+}
+}
+}
         // TODO: ADD AN APPROVAL STAGE
 
-        stage('stage 3') {
+        stage('stage 3-sudhir') {
             steps {
                 sh 'echo hello from stage 3!. This is the last stage...'
             }
