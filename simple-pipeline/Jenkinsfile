@@ -29,7 +29,7 @@ stage ( 'stage 2') {
 
 steps {
 
-sh echo 'hellp from stage 2 !'
+sh 'echo hellp from stage 2 !'
 
 }
 }
